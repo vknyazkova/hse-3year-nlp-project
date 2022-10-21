@@ -1,0 +1,135 @@
+{% extends 'base.html' %}
+
+{% block title %} Corpora search {% endblock %}
+
+{% block scripts %}
+{#    <script src="/static/js/scripts.js"></script>#}
+{% endblock %}
+
+{% block content %}
+
+    <div class="container">
+        <form method="get" target="_blank" action="/results">
+            <div class="row justify-content-center m-5">
+                <div class="col">
+                    <h4>Поиск точных форм</h4>
+                    <label class="my-3">
+                        <input class="form-control" type="text" name="exact_form" placeholder="Введите запрос" size="100%">
+                    </label>
+                    <p>
+                        <button type="submit" class="btn btn-secondary">Искать</button>
+                    </p>
+                </div>
+            </div>
+        </form>
+    </div>
+
+
+
+    <div class="container">
+        <h4>Лексико-грамматический поиск</h4>
+        <div>
+            <form method="post" target="_blank" action="/results">
+            <div class="form-group">
+
+
+                <div class="row p-2 m-2 align-items-end" id="duplicator0" style="background-color: #ecf0f1; border-radius: 10px;">
+                    <div class="col-sm-3">
+                        <label for="word" class="form-label">
+                            Лемма или словоформа
+                            <a class="fst-italic" data-bs-toggle="collapse" href="#WordInstruction" role="button" aria-expanded="false" aria-controls="collapseExample">(i)</a>
+                        </label>
+                        <div class="collapse" id="WordInstruction">
+                              <div class="card card-body">
+                                  {{ instructions['word'] }}
+                              </div>
+                        </div>
+                        <input class="form-control input-sm" id="word" name="0_word" placeholder="нарезать" size="100%">
+
+                    </div>
+
+                    <div class="col-sm-2">
+                        <label for="pos_select" class="form-label">POS</label>
+                        <select class="form-select" id="pos_select" name="0_pos">
+                                <option selected></option>
+                            {% for tag in pos_tags %}
+                                <option value="{{ tag }}">{{ tag }}</option>
+                            {% endfor %}
+                        </select>
+                    </div>
+
+                    <div class="col-sm-4">
+                        <label for="features" class="form-label">
+                            Признаки
+                            <a class="fst-italic" data-bs-toggle="collapse" href="#FeaturesInstruction" role="button" aria-expanded="false" aria-controls="collapseExample">(i)</a>
+                        </label>
+                        <div class="collapse" id="FeaturesInstruction">
+                              <div class="card card-body">
+                                  {{ instructions['features'] }}<a href="https://universaldependencies.org/u/feat/index.html">сайт UD</a>
+                              </div>
+                        </div>
+                        <input class="form-control input-sm" id='features' name="0_features" placeholder="Tense=Past, Number=Plur">
+                    </div>
+                </div>
+
+
+                <div class="row p-2 m-2 align-items-end" id="duplicater1" style="background-color: #ecf0f1; border-radius: 10px;">
+
+                    <div class="row my-2">
+                        <div class="col-sm-2">
+                            <div class="input-group">
+                                <span class="input-group-text">From</span>
+                                <input type="text" class="form-control" value="1" name="1_from">
+                                <span class="input-group-text">To</span>
+                                <input type="text" class="form-control" value="1" name="1_to">
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="row my-2 align-items-end">
+
+                        <div class="col-sm-3">
+                            <label>
+                                Лемма или словоформа
+                                <input class="form-control input-sm" name="1_word" size="100%">
+                            </label>
+                        </div>
+
+                        <div class="col-sm-2">
+                            <label for="pos_select" class="form-label">POS</label>
+                            <select class="form-select" id="pos_select" name="1_pos">
+                                    <option selected></option>
+                                {% for tag in pos_tags %}
+                                    <option value="{{ tag }}">{{ tag }}</option>
+                                {% endfor %}
+                            </select>
+                        </div>
+
+                        <div class="col-sm-4">
+                            <label>
+                                Features
+                                <input class="form-control input-sm" name="1_features" size="100%">
+                            </label>
+                        </div>
+
+                        <div class="col-sm-1 align-self-end">
+                            <a class="btn btn-secondary" onclick="duplicate()">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-plus-lg" viewBox="0 0 16 16">
+                                    <path fill-rule="evenodd" d="M8 2a.5.5 0 0 1 .5.5v5h5a.5.5 0 0 1 0 1h-5v5a.5.5 0 0 1-1 0v-5h-5a.5.5 0 0 1 0-1h5v-5A.5.5 0 0 1 8 2Z"/>
+                                </svg>
+                                    <script src="/search/web_app/static/js/scripts.js"></script>
+                            </a>
+                        </div>
+
+                    </div>
+
+                </div>
+
+            </div>
+            <div class="row p-2 m-2">
+                <button type="submit" class="btn btn-secondary">Искать</button>
+            </div>
+            </form>
+        </div>
+    </div>
+{% endblock %}
