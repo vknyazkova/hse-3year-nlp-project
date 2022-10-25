@@ -51,32 +51,16 @@
                 словом и предыдущим, находящимся в форме поиска выше.<br>
                 См. подробнее помощь при полях "Лемма", "Слово", "Грамматические признаки", "Семантические признаки" и т.д.
             </p>
-            <table class="table">
-                <thead>
-                    <tr>
-                        <th scope="col">Что хотим найти?</th>
-                        <th scope="col">Запрос</th>
-                        <th scope="col">Пример выдачи</th>
-                    </tr>
-                </thead>
-                <tbody>
-                {% for example in advanced %}
-                    <tr>
-                        <td>{{ example[0] }}</td>
-                        <td>
-                            {% for result in example[1] %}
-                                {{ result }} <br>
-                            {% endfor %}
-                        </td>
-                        <td>
-                            {% for result in example[2] %}
-                                {{ result }} <br>
-                            {% endfor %}
-                        </td>
-                    </tr>
-                {% endfor %}
-                </tbody>
-            </table>
+            {% for example in advanced %}
+                <div class="row m-2">
+                    <div class="col-sm-6">
+                        <img src="{{ example[0] }}" style="height: 100%; width: 100%; object-fit: contain;">
+                    </div>
+                    <div class="col-sm-6">
+                        <img src="{{ example[1] }}" style="height: 100%; width: 100%; object-fit: contain;">
+                    </div>
+                </div>
+            {% endfor %}
         </div>
     </div>
 {% endblock %}
