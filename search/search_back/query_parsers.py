@@ -46,7 +46,7 @@ def request2query(response_dict):
             node_patterns[token_id].update(new_pattern)
     
     node_patterns.update(find_missing_nodes(node_patterns, constraints))
-    return node_patterns, constraints
+    return dict(node_patterns), constraints
 
 def string2query(s):
     nlp = spacy.load("ru_core_news_sm")
