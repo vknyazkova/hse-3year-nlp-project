@@ -3,7 +3,7 @@
 {% block title %} Corpora search {% endblock %}
 
 {% block scripts %}
-    <script src="/static/js/scripts.js"></script>
+    <script src="../static/js/scripts.js"></script>
 {% endblock %}
 
 {% block content %}
@@ -68,7 +68,7 @@
                                   {{ instructions['features'] }}<a href="https://universaldependencies.org/u/feat/index.html" target="_blank">сайт UD</a>
                               </div>
                         </div>
-                        <input class="form-control input-sm" id='features' name="0_features" placeholder="Tense=Past, Number=Plur">
+                        <input class="form-control input-sm" id='features' name="0_features" placeholder="Tense=Past, Number=Plur" pattern="^$|^([A-z]*?=[A-z\d]*?,? ?)+?$">
                     </div>
                 </div>
 
@@ -79,9 +79,9 @@
                         <div class="col-sm-2">
                             <div class="input-group">
                                 <span class="input-group-text">From</span>
-                                <input type="text" class="form-control" value="1" name="1_from">
+                                <input type="text" class="form-control" value="1" name="1_from" required>
                                 <span class="input-group-text">To</span>
-                                <input type="text" class="form-control" value="1" name="1_to">
+                                <input type="text" class="form-control" value="1" name="1_to" required>
                             </div>
                         </div>
                     </div>
@@ -108,7 +108,7 @@
                         <div class="col-sm-4">
                             <label>
                                 Features
-                                <input class="form-control input-sm" name="1_features" size="100%">
+                                <input class="form-control input-sm" name="1_features" size="100%" pattern="^$|^([A-z]*?=[A-z\d]*?,? ?)+?$">
                             </label>
                         </div>
 
