@@ -114,7 +114,7 @@ def query_info(n_p, cs):
                         from_ = cs[key2]['lindist'][0]
                         to = cs[key2]['lindist'][1]
                         result.append(f'{word}, на расстоянии от {from_} до {to} от Слова {key1}')
-                    elif len(tag) == 1 and tag[0] == 'lemma' :
+                    elif len(tag) == 1 and tag[0] != 'form' :
                         word = n_p[key1][tag[0]]
                         from_ = cs[key2]['lindist'][0]
                         to = cs[key2]['lindist'][1]
