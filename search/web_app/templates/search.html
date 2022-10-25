@@ -3,7 +3,7 @@
 {% block title %} Corpora search {% endblock %}
 
 {% block scripts %}
-{#    <script src="/static/js/scripts.js"></script>#}
+    <script src="/static/js/scripts.js"></script>
 {% endblock %}
 
 {% block content %}
@@ -33,7 +33,7 @@
             <div class="form-group">
 
 
-                <div class="row p-2 m-2 align-items-end" id="duplicator0" style="background-color: #ecf0f1; border-radius: 10px;">
+                <div class="row p-2 m-2 align-items-end" id="duplicator_0" style="background-color: #ecf0f1; border-radius: 10px;">
                     <div class="col-sm-3">
                         <label for="word" class="form-label">
                             Лемма или словоформа
@@ -50,7 +50,7 @@
 
                     <div class="col-sm-2">
                         <label for="pos_select" class="form-label">POS</label>
-                        <select class="form-select" id="pos_select" name="0_pos">
+                        <select class="form-select" id="pos_select" name="0_upos">
                                 <option selected></option>
                             {% for tag in pos_tags %}
                                 <option value="{{ tag }}">{{ tag }}</option>
@@ -65,7 +65,7 @@
                         </label>
                         <div class="collapse" id="FeaturesInstruction">
                               <div class="card card-body">
-                                  {{ instructions['features'] }}<a href="https://universaldependencies.org/u/feat/index.html">сайт UD</a>
+                                  {{ instructions['features'] }}<a href="https://universaldependencies.org/u/feat/index.html" target="_blank">сайт UD</a>
                               </div>
                         </div>
                         <input class="form-control input-sm" id='features' name="0_features" placeholder="Tense=Past, Number=Plur">
@@ -73,7 +73,7 @@
                 </div>
 
 
-                <div class="row p-2 m-2 align-items-end" id="duplicater1" style="background-color: #ecf0f1; border-radius: 10px;">
+                <div class="row p-2 m-2 align-items-end" id="duplicater_1" style="background-color: #ecf0f1; border-radius: 10px;">
 
                     <div class="row my-2">
                         <div class="col-sm-2">
@@ -97,7 +97,7 @@
 
                         <div class="col-sm-2">
                             <label for="pos_select" class="form-label">POS</label>
-                            <select class="form-select" id="pos_select" name="1_pos">
+                            <select class="form-select" id="pos_select" name="1_upos">
                                     <option selected></option>
                                 {% for tag in pos_tags %}
                                     <option value="{{ tag }}">{{ tag }}</option>
@@ -117,7 +117,15 @@
                                 <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-plus-lg" viewBox="0 0 16 16">
                                     <path fill-rule="evenodd" d="M8 2a.5.5 0 0 1 .5.5v5h5a.5.5 0 0 1 0 1h-5v5a.5.5 0 0 1-1 0v-5h-5a.5.5 0 0 1 0-1h5v-5A.5.5 0 0 1 8 2Z"/>
                                 </svg>
-                                    <script src="/search/web_app/static/js/scripts.js"></script>
+                            </a>
+                        </div>
+
+                        <div class="col-sm-1">
+                            <a class="btn" id="close_1" style="background-color: #ecf0f1;" onclick="removeBlock(this.id)">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor" class="bi bi-x-circle" viewBox="0 0 16 16">
+                                    <path d="M8 15A7 7 0 1 1 8 1a7 7 0 0 1 0 14zm0 1A8 8 0 1 0 8 0a8 8 0 0 0 0 16z"/>
+                                    <path d="M4.646 4.646a.5.5 0 0 1 .708 0L8 7.293l2.646-2.647a.5.5 0 0 1 .708.708L8.707 8l2.647 2.646a.5.5 0 0 1-.708.708L8 8.707l-2.646 2.647a.5.5 0 0 1-.708-.708L7.293 8 4.646 5.354a.5.5 0 0 1 0-.708z"/>
+                                </svg>
                             </a>
                         </div>
 
