@@ -1,7 +1,6 @@
 def query_info(n_p, cs): # n_p - node_patterns; cs - constraints
     result = []
     if '0' in n_p:
-        #tag = ['form', 'lemma']
         if len(n_p['0']) > 1:
             feats = []
             for key3 in n_p['0']:
@@ -13,7 +12,7 @@ def query_info(n_p, cs): # n_p - node_patterns; cs - constraints
             if len(tag) == 1 and tag[0] == 'form' :
                 word = '"' + n_p['0'][tag[0]] + '"'
                 result.append(word)
-            elif len(tag) == 1 and tag[0] == 'lemma' :
+            elif len(tag) == 1 and tag[0] != 'form' :
                 word = n_p['0'][tag[0]]
                 result.append(word)
             else:
