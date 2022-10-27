@@ -2,7 +2,7 @@ import spacy
 from collections import defaultdict
 
 
-def parse_word(word_string):
+def parse_word(word_string, nlp):
     new_pattern = defaultdict(dict)
     quotes = ["'", "«", "»", '"']
     l = []
@@ -15,7 +15,7 @@ def parse_word(word_string):
         else:
             l.append(0)
     if sum(l) == 0:
-        nlp = spacy.load("ru_core_news_sm")
+        # nlp = spacy.load("ru_core_news_sm")
         lemma = nlp(word_string)[0].lemma_
         # new_pattern['lemma'] = lemma
         new_pattern.update(lemma=lemma)
@@ -27,7 +27,7 @@ def find_missing_nodes(node_patterns, constraints):
     return {missing_node: {} for missing_node in constraint_nodes - set(node_patterns.keys())}
 
 
-def request2query(response_dict):
+def request2query(response_dict, nlp):
     node_patterns = defaultdict(dict)
     constraints = {}
     range2indexes = {'from': 0, 'to': 1}
@@ -39,7 +39,7 @@ def request2query(response_dict):
                 new_pattern = {f.split('=')[0].strip(): f.split('=')[1].strip() for f in
                                response_dict[field].split(',')}
             elif field_name == 'word':
-                new_pattern = parse_word(response_dict[field])
+                new_pattern = parse_word(response_dict[field], nlp)
             elif field_name == 'from' or field_name == 'to':
                 new_pattern = {}
                 pair = (str(int(token_id) - 1), token_id)
@@ -54,8 +54,8 @@ def request2query(response_dict):
     return dict(node_patterns), constraints
 
 
-def string2query(s):
-    nlp = spacy.load("ru_core_news_sm")
+def string2query(s, nlp):
+    # nlp = spacy.load("ru_core_news_sm")
     doc = nlp(s)
     node_patterns = {}
     for token in doc:
