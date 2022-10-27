@@ -1,0 +1,29 @@
+{% extends 'base.html' %}
+
+{% block title %} About {% endblock %}
+
+
+{% block content %}
+    <div class="container">
+        <div class="row m-4 p-2" style="background-color: #f8f9fa; border-radius: 10px">
+            <h4>Специфика корпуса</h4>
+            <p>
+                Корпус рецептов - это собрание 500 рецептов, размеченных по частям речи, грамматическим признакам и
+                синтаксическим отношениям. Все рецепты взяты с сайта <a href="https://www.gastronom.ru/">ГАСТРОНОМЪ</a>,
+                распарсены при помощи библиотеки <a href="https://spacy.io/models/ru#ru_core_news_sm">spacy</a> с
+                добавлением специальных правил, учитывающих специфику корпуса
+                (например, сокращения мин. ч.л. и специальные обозначения - 200˚С). Так как spacy использует при разметке
+                тэги Universal Dependencies, то и при поиске надо указывать тэги
+                <a href="https://universaldependencies.org/treebanks/ru_syntagrus/index.html">UD</a>.
+            </p>
+        </div>
+        <div class="row m-4 p-2" style="background-color: #f8f9fa; border-radius: 10px">
+            <h4>Как можно искать по корпусу?</h4>
+            <p>
+                Наш корпус позволяет искать как точные формы/сочетания форм, так и осуществялет
+                лексико-грамматический поиск, где можно разным образом скомбинировать признаки слов для поиска.
+                Подробнее про форматы поиска <a href="/instructions">см. инструкцию</a>
+            </p>
+        </div>
+    </div>
+{% endblock %}

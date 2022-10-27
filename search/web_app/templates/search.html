@@ -68,7 +68,7 @@
                                   {{ instructions['features'] }}<a href="https://universaldependencies.org/u/feat/index.html" target="_blank">сайт UD</a>
                               </div>
                         </div>
-                        <input class="form-control input-sm" id='features' name="0_features" placeholder="Tense=Past, Number=Plur" pattern="^$|^([A-z]*?=[A-z\d]*?,? ?)+?$">
+                        <input class="form-control input-sm" id='features' name="0_features" placeholder="Tense=Past, Number=Plur" pattern="^$|^([A-z]*?=[A-z\d\|]*?,? ?)+?$">
                     </div>
                 </div>
 
@@ -108,7 +108,7 @@
                         <div class="col-sm-4">
                             <label>
                                 Features
-                                <input class="form-control input-sm" name="1_features" size="100%" pattern="^$|^([A-z]*?=[A-z\d]*?,? ?)+?$">
+                                <input class="form-control input-sm" name="1_features" size="100%" pattern="^$|^([A-z]*?=[A-z\d\|]*?,? ?)+?$">
                             </label>
                         </div>
 
