@@ -25,7 +25,10 @@ def corpora_search(conllu_path, query):
         sf.filter_sentence(query[0], query[1])
         if sf.entries:
             for entry in sf.entries:
-                result[(sentence.metadata['source'], sentence.metadata['name'])].append(highlighted_tokens(entry, sentence))
+                try:
+                    result[(sentence.metadata['source'], sentence.metadata['name'])].append(highlighted_tokens(entry, sentence))
+                except KeyError:
+                    print(sentence.metadata)
     conlluf.close()
     result = {i + 1: {'source': doc[0], 'name': doc[1], 'entries': result[doc]} for i, doc in enumerate(result)}
     return result
